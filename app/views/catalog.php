@@ -1,4 +1,3 @@
-
     <header>
       <h1>Book catalog</h1>
       <p>
@@ -109,6 +108,7 @@
     <section aria-labelledby="books-title">
       <h2 id="books-title">Books</h2>
 
+      <?php var_dump($items);?>
       <article>
         <h3>
           <a href="book-detail.html">The Banana Gambit</a>

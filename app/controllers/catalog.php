@@ -1,21 +1,10 @@
 <?php
+require __DIR__.'/../models/catalog.php';
 
-function catalog_detail()
+function catalog_index($pdo)
 {
-  
-    $data = [
-        'page_title' => 'Ma lib de singe',
-        'items' => [
-            [
-                'id'=> 1,
-                'label' => 'bouteille'
-                ],
-                [
-                    'id'=> 2,
-                    'label' => 'chat'
-                    ],
-                    ]
-                    ];
-
+    $data = [];
+    $data['items'] = get_all_items($pdo);
+    var_dump($data['items']);die;
     return render('app/views/catalog.php', $data);
 }
