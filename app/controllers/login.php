@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../models/operator.php';
 
 function login_index(PDO $pdo, ?string $id = null): string
 {
@@ -8,10 +9,10 @@ function login_index(PDO $pdo, ?string $id = null): string
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
 
-        if ($email === 'admin@monkeychess.test' && $password === 'admin') {
-            $_SESSION['user_id'] = 1;
-            $_SESSION['user_email'] = $email;
+        $operator = operator_find_by_email($pdo, $email);
 
+        if ($operator && password_verify($password, $operator['password'])) {
+            set_logged($operator);
             redirect('/admin');
         }
 

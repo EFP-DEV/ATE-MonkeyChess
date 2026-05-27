@@ -146,7 +146,7 @@
         </dl>
 
         <p>
-          <a href="/catalog/show/<?= $item['slug'];?>">View details for The Banana Gambit</a>
+          <a href="/catalog/show/<?= escape($item['slug']) ?>"><?= escape($item['title']) ?></a>
         </p>
       </article>
       <?php
