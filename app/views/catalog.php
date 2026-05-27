@@ -108,15 +108,15 @@
     <section aria-labelledby="books-title">
       <h2 id="books-title">Books</h2>
 
-      <?php var_dump($items);?>
-      <article>
+      <?php foreach($items as $item){
+      ?>
+    <article>
         <h3>
-          <a href="book-detail.html">The Banana Gambit</a>
+          <a href="book-detail.html"><?= $item['title'];?></a>
         </h3>
 
         <p>
-          A beginner introduction to the most famous opening in monkey chess:
-          the early banana sacrifice.
+          <?= $item['description'];?>
         </p>
 
         <dl>
@@ -146,9 +146,12 @@
         </dl>
 
         <p>
-          <a href="book-detail.html">View details for The Banana Gambit</a>
+          <a href="/catalog/show/<?= $item['slug'];?>">View details for The Banana Gambit</a>
         </p>
       </article>
+      <?php
+      }?>
+  
 
     </section>
  
