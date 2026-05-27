@@ -2,26 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Monkey Chess - <?= $page_title;?></title>
+
+  <title>
+    Monkey Chess<?= !empty($page_title) ? ' - ' . escape($page_title) : ''; ?>
+  </title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Catalog of fictional books about monkey chess.">
 </head>
 
 <body>
   <header>
-    <p><strong>Monkey Chess Library</strong></p>
+    <p>
+      <a href="/">
+        <strong>Monkey Chess Library</strong>
+      </a>
+    </p>
 
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="books.html" aria-current="page">Catalog</a></li>
-        <li><a href="book-detail.html">Featured book</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/catalog">Catalog</a></li>
+        <li><a href="/catalog/show/1">Featured book</a></li>
+
+        <?php if (empty($_SESSION['user_id'])): ?>
+          <li><a href="/login">Login</a></li>
+        <?php else: ?>
+          <li><a href="/admin">Admin</a></li>
+          <li><a href="/logout">Logout</a></li>
+        <?php endif; ?>
       </ul>
     </nav>
   </header>
 
   <main>
-    <?php echo $page_content; ?>
+    <?= $page_content ?>
   </main>
 
   <footer>
